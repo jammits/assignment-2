@@ -32,13 +32,15 @@ public class GuessingGame {
 			else {
 				if (userValue < theRandomNumber) {
 					System.out.println("Please pick a higher number");
+					numberOfGuesses++;
 				}
 				else if(userValue > theRandomNumber) {
 					System.out.println("Please pick a lower number");
+					numberOfGuesses++;
 				}
 			}
 			userValue = Integer.parseInt(input.nextLine());
-			numberOfGuesses++;
+
 		}
 		
 		//Edge case checking if guess match on the 5th try
