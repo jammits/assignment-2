@@ -41,7 +41,7 @@ public class GuessingGame {
 			numberOfGuesses++;
 		}
 		
-		//checks for match of number last try and only if wrong
+		//Edge case checking if guess match on the 5th try
 		if (numberOfGuesses == 5 && userValue != theRandomNumber) {
 			System.out.println("You lose, the number to guess was " + theRandomNumber);
 		}
