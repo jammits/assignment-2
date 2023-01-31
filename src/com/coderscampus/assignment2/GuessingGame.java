@@ -10,47 +10,60 @@ public class GuessingGame {
 		//Need input, need target number, need while loop, 5 guesses, conditional for higher/lower/equal
 		//Only use ints
 		
-		int numberOfGuesses = 1;
+		int numberOfGuesses = 0;
 		
 		Random target = new Random();
 		
 		int theRandomNumber = target.nextInt(100) + 1;
+		System.out.println("random: "+ theRandomNumber);
 		
 		Scanner input = new Scanner(System.in);
 		
-		System.out.print("Pick a number between 1 and 100 ");
 		
-		String userInput = input.nextLine();
 		
-		int userValue = Integer.parseInt(userInput);
+		int userValue = 0;
 
-		while((userValue != theRandomNumber) && (numberOfGuesses < 5)) {
+		while(numberOfGuesses < 5) {
+			
+			System.out.print("Pick a number between 1 and 100 ");
+			
+			String userInput = input.nextLine();
+			
+			userValue = Integer.parseInt(userInput);
 			
 			if (userValue > 100 || userValue < 1) {
 				System.out.println("Your guess is not between 1 and 100, please try again");
 			}
+			
 			else {
-				if (userValue < theRandomNumber) {
-					System.out.println("Please pick a higher number");
-					numberOfGuesses++;
+				
+				
+				
+				if (userValue == theRandomNumber) {
+					System.out.println("You win!");
+					break;
 				}
-				else if(userValue > theRandomNumber) {
-					System.out.println("Please pick a lower number");
-					numberOfGuesses++;
+				
+				else {
+						numberOfGuesses++;
+						if (userValue < theRandomNumber) {
+							System.out.println("Please pick a higher number");
+	
+						}
+						else if(userValue > theRandomNumber) {
+							System.out.println("Please pick a lower number");
+	
+						}
 				}
 			}
-			userValue = Integer.parseInt(input.nextLine());
-
 		}
 		
 		//Edge case checking if guess match on the 5th try
-		if (numberOfGuesses == 5 && userValue != theRandomNumber) {
+		if (userValue != theRandomNumber) {
 			System.out.println("You lose, the number to guess was " + theRandomNumber);
 		}
 		
-		if (userValue == theRandomNumber) {
-			System.out.println("You win!");
-		}
+
 		
 		input.close();
 	}
